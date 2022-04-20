@@ -1,0 +1,28 @@
+﻿@inject HamsterService hamsterService;
+
+<div class="container card" style="width: 18rem;">
+    <div class="form-group card-body">
+        <input class="form-control"
+               @bind-value="searchTerm" id="search" 
+               placeholder="Hamster to search for..." />
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-secondary" @onclick="GethamsterbySearch">
+            Search
+        </button>
+    </div>
+</div>
+
+@code {
+    private string searchTerm { get; set; } = string.Empty;
+    List<Hamster> hamsters { get; set; } = new List<Hamster>();
+
+    public void GethamsterbySearch()
+    {
+
+        hamsters = hamsterService.GetHamsterBySearch(searchTerm);
+
+    }
+
+
+}

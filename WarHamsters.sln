@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarHamsters", "WarHamsters\WarHamsters.csproj", "{76220933-06FA-4EBD-BA67-44AC84740404}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{246F9B65-7FCE-49CB-BFE9-0FCE2739BB64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76220933-06FA-4EBD-BA67-44AC84740404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76220933-06FA-4EBD-BA67-44AC84740404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76220933-06FA-4EBD-BA67-44AC84740404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76220933-06FA-4EBD-BA67-44AC84740404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246F9B65-7FCE-49CB-BFE9-0FCE2739BB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246F9B65-7FCE-49CB-BFE9-0FCE2739BB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246F9B65-7FCE-49CB-BFE9-0FCE2739BB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246F9B65-7FCE-49CB-BFE9-0FCE2739BB64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9880234C-CBEF-4239-90CE-3745440729BB}
+	EndGlobalSection
+EndGlobal

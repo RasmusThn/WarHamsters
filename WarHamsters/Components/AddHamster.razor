@@ -1,0 +1,78 @@
+﻿@page "/Add"
+@inject HamsterService hamsterService;
+
+<div class="card" style="width: 18rem;">
+<h3>AddHamster</h3>
+<form>
+    <div class="form-group">
+        <label for="@hamster.Name">Name</label>
+        <input @bind-value="@hamster.Name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="@hamster.Age">Age</label>
+        <select @bind="@hamster.Age" class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            @*Dem Blir typ aldrig äldre än 5 ändå*@
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="@hamster.FavFood">Favourite Food</label>
+        <input @bind-value="@hamster.FavFood" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="@hamster.Loves">Loves</label>
+        <input @bind-value="@hamster.Loves" type="text" class="form-control">
+    </div>
+
+    <label for="@hamster.ImgName">Image Url</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">/images/hamsters/hamster-</span>
+        </div>
+        <select @bind="@num" class="custom-select" >
+            <option selected>Img Nr</option>
+            <option value="1">1</option> <option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            @*Kanske lägga till för alla bilder ifall vi inte få igång "Ladda upp fil"
+              Eller att vi kör alla genom seedData *@
+        </select>
+        <div class="input-group-append">
+            <label class="input-group-text">.jpg</label>
+        </div>
+    </div>
+
+    @*Ladda upp fil*@
+    @*<div class="form-group">
+        <label for="File1">Upload Image</label>
+        <input type="file" class="form-control-file">
+    </div>*@
+
+    <button @onclick="Add" type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+@code {
+    public Hamster hamster { get; set; } = new Hamster();
+    private string href = "/images/hamsters/hamster-";
+    private string num;
+    public string GetJpgSrc()
+    {
+        string src = href + num + ".jpg";
+
+        return src;
+    }
+
+    public void Add()
+    {
+        if (hamster.Name != null)
+        {
+            hamster.ImgName = GetJpgSrc();
+            hamsterService.AddHamster(hamster);
+        }
+        return;
+    }
+}
