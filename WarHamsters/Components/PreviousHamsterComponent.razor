@@ -1,11 +1,44 @@
 ﻿@using DataLibrary.Models
-<h3>PreviousHamsterComponent</h3>
+<h3>Match Won by: @*@match.WinnerId.ToString()*@</h3>
 
+<div class="row" >
+   
+<div class="card col-4 d-flex" style="width: 25rem;">
+    <img class="card-img-top btn" src="@Hamster1.ImgName" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Hamster1.Name</h5>
+        <p class="card-text">
+           Wins: @Hamster1.Wins
+            <br />
+           Defeats: @Hamster1.Defeats
+            <br />
+           Win %: (@Hamster1.Wins/@Hamster1.Games)% 
+           Games: @Hamster1.Games
+        </p>
+    </div>
+</div>
+<div class="card col-4 d-flex" style="width: 25rem;">
+    <img class="card-img-top btn" src="@Hamster2.ImgName" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Hamster2.Name</h5>
+        <p class="card-text">
+           Wins: @Hamster2.Wins
+            <br />
+           Defeats: @Hamster2.Defeats
+            <br />
+           Games: @Hamster2.Games
+        </p>
+       
+    </div>
+</div>
+
+</div>
 
 @code {
     [Parameter]
-    public Hamster hamster1 { get; set; }
+    public Hamster Hamster1 { get; set; }
     [Parameter]
-    public Hamster hamster2 { get; set; }
-
+    public Hamster Hamster2 { get; set; }
+    [Parameter]
+    public Match match { get; set; }
 }
