@@ -4,10 +4,12 @@ namespace DataLibrary.Repository;
 
 public class HamsterRepository
 {
+    
     private readonly IDbContextFactory<DataContext> _factory;
     public HamsterRepository(IDbContextFactory<DataContext> factory)
     {
         _factory = factory;
+        //var ctx = _factory.CreateDbContext(); Testa om detta funkar nån gång
     }
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
@@ -112,6 +114,21 @@ public class HamsterRepository
             {
                 return false;
             }
+        }
+    }
+    public async Task AddMatch(Hamster hamster1, Hamster hamster2)
+    {
+        using (var ctx = _factory.CreateDbContext())
+        {
+            Match match = new Match
+            {
+                Hamster1Id = hamster1.Id,
+                Hamster2Id = hamster2.Id
+
+            };
+            ctx.Matches.Add(match);
+            await ctx.SaveChangesAsync();
+            //For loopa för varje som inte har samma id som sig själv
         }
     }
 }
