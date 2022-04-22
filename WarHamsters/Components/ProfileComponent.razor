@@ -1,0 +1,49 @@
+﻿@page "/profile/{hamsterId}/{oldpage}"
+@inject NavigationManager navigation;
+@inject HamsterService hamsterService;
+
+<h3>Profile for @hamster.Name</h3>
+<HamsterComponent Hamster="@hamster" IsProfile="Isprofile"></HamsterComponent>
+
+
+<button @onclick="GoBack" class="btn btn-secondary">Back</button>
+<button @onclick="(x => Delete(hamster.Id))" class="btn btn-danger">Delete</button>
+
+
+@code {
+    [Parameter]
+    public string hamsterId { get; set; }
+    [Parameter]
+    public string oldpage { get; set; }
+    private Hamster hamster;
+    private bool Isprofile { get; set; } = true;
+    protected async override void OnInitialized()
+    {
+        int id = int.Parse(hamsterId);
+        hamster = await hamsterService.GetHamsterById(id);
+
+    }
+    public void Delete(int id)
+    {
+
+        hamsterService.DeleteHamster(hamster);
+        navigation.NavigateTo("/gallery");
+
+    }
+    public void GoBack()
+    {
+        if (oldpage == "top5")
+        {
+            navigation.NavigateTo("/top5");
+        }
+        else if(oldpage == "low5")
+        {
+            navigation.NavigateTo("/low5");
+        }
+        else
+        {
+            navigation.NavigateTo("/gallery");
+        }
+    }
+    //Visa Hamsterns profil och matcher med resultat?
+}

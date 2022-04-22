@@ -11,7 +11,10 @@ public class HamsterService
     {
         _repo = repo;
     }
-
+    public async Task AddNewMatch(Hamster hamsterWin,Hamster hamsterLoss)
+    {
+        await _repo.AddNewMatch(hamsterWin, hamsterLoss);
+    }
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
         
@@ -39,7 +42,7 @@ public class HamsterService
     {
         return _repo.CheckDatabaseForHamsters();
     }
-    public async void DeleteHamster(Hamster hamster)
+    public void DeleteHamster(Hamster hamster)
     {
         _repo.DeleteHamster(hamster);
     }
@@ -50,5 +53,11 @@ public class HamsterService
     public async Task<List<Hamster>> GetTwoRandomHamsters()
     {
         return await _repo.GetTwoRandomHamsters();
+    }
+
+    public async Task<List<Hamster>> Get5Hamsters(bool isTop)
+    {
+       var hamsters = _repo.Get5Hamsters(isTop);
+        return await hamsters;
     }
 }

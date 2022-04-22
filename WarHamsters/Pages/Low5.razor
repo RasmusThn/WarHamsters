@@ -1,0 +1,45 @@
+﻿@page "/low5"
+
+@inject HamsterService hamsterService;
+
+<h3>Low 5</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Wins</th>
+            <th>Defeats</th>
+            <th>Games</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @if (Hamsters != null)
+        {
+            
+        
+        @foreach (var hamster in Hamsters)
+        {
+            <tr>
+                <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
+                <td>@hamster.Wins</td>
+                <td>@hamster.Defeats</td>
+                <td>@hamster.Games</td>
+                <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
+            </tr>
+        }
+        }
+    </tbody>
+</table>
+@code {
+    private List<Hamster> Hamsters;
+    private string url = "low5";
+    protected override async Task OnInitializedAsync()
+    {
+        bool isTop = false;
+        Hamsters = await hamsterService.Get5Hamsters(isTop);
+
+    }
+}

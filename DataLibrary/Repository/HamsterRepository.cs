@@ -4,12 +4,25 @@ namespace DataLibrary.Repository;
 
 public class HamsterRepository
 {
-    
+
     private readonly IDbContextFactory<DataContext> _factory;
     public HamsterRepository(IDbContextFactory<DataContext> factory)
     {
         _factory = factory;
-        //var ctx = _factory.CreateDbContext(); Testa om detta funkar nån gång
+        //var ctx = _factory.CreateDbContext(); Testa om detta funkar nån gång/ fråga om det är rätt att göra så
+    }
+    public async Task AddNewMatch(Hamster hamsterWin, Hamster hamsterLoss)
+    {
+        using (var ctx = _factory.CreateDbContext())
+        {
+            Match match = new Match
+            {
+                WinnerId = hamsterWin.Id,
+                LoserId = hamsterLoss.Id
+            };
+            ctx.Matches.Add(match);
+            await ctx.SaveChangesAsync();
+        }
     }
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
@@ -20,7 +33,6 @@ public class HamsterRepository
             hamsterLoss.Defeats++;
             hamsterLoss.Games++;
             ctx.UpdateRange(hamsterWin, hamsterLoss);
-           
             await ctx.SaveChangesAsync();
 
         }
@@ -48,7 +60,7 @@ public class HamsterRepository
         using (var ctx = _factory.CreateDbContext())
         {
             ctx.Hamsters.Add(hamster);
-           ctx.SaveChangesAsync();
+            ctx.SaveChangesAsync();
             return true;
         }
         return false;
@@ -57,34 +69,33 @@ public class HamsterRepository
     {
         using (var ctx = _factory.CreateDbContext())
         {
-          ctx.Hamsters.Remove(hamster);
-          await ctx.SaveChangesAsync();
+            ctx.Hamsters.Remove(hamster);
+            await ctx.SaveChangesAsync();
         }
-        
+
     }
-    
     public async Task<List<Hamster>> GetTwoRandomHamsters()
     {
         using (var ctx = _factory.CreateDbContext())
         {
-        Random rnd = new Random();  
-        int n = ctx.Hamsters.Count();
-        var list = ctx.Hamsters.ToList();
+            Random rnd = new Random();
+            int n = ctx.Hamsters.Count();
+            var list = ctx.Hamsters.ToList();
 
-        // Plockat från Stackoverflow/google --https://blog.codinghorror.com/shuffling/ via Patrik S.
-        while (n > 1)
-        {
-            int k = (rnd.Next(0, n) % n);
-            n--;
-            Hamster value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
+            // Plockat från Stackoverflow/google --https://blog.codinghorror.com/shuffling/ via Patrik S.
+            while (n > 1)
+            {
+                int k = (rnd.Next(0, n) % n);
+                n--;
+                Hamster value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
             List<Hamster> data = list
                     .Take(2)
                     .ToList();
 
-        return data.ToList();
+            return data.ToList();
         }
     }
     public async Task<List<Hamster>> GetAllHamsters()
@@ -97,6 +108,25 @@ public class HamsterRepository
             return hamsters;
         }
 
+    }
+    public async Task<List<Hamster>> Get5Hamsters(bool isTop)
+    {
+        using (var ctx = _factory.CreateDbContext())
+        {
+            if (isTop)
+            {
+                var hamsters = ctx.Hamsters.OrderByDescending(x => x.Wins);
+                List<Hamster> hamsters5 = hamsters.Take(5).ToList();
+                return hamsters5;
+            }
+            else
+            {
+                var hamsters = ctx.Hamsters.OrderByDescending(x => x.Defeats);
+                List<Hamster> hamsters5 = hamsters.Take(5).ToList();
+                return hamsters5;
+            }
+
+        }
     }
     /// <summary>
     /// Returns true if there are any Hamsters in the Database
@@ -116,20 +146,6 @@ public class HamsterRepository
             }
         }
     }
-    public async Task AddMatch(Hamster hamster1, Hamster hamster2)
-    {
-        using (var ctx = _factory.CreateDbContext())
-        {
-            Match match = new Match
-            {
-                Hamster1Id = hamster1.Id,
-                Hamster2Id = hamster2.Id
 
-            };
-            ctx.Matches.Add(match);
-            await ctx.SaveChangesAsync();
-            //For loopa för varje som inte har samma id som sig själv
-        }
-    }
 }
 

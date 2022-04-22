@@ -68,3 +68,7 @@ a, .btn-link {
     border-width:medium;
     border-radius:50%;
 }
+.hamster-bild-small {
+    width: 70px;
+    height: 70px;
+}

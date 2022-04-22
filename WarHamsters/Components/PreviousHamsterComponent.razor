@@ -2,34 +2,10 @@
 
 
 <div class="row justify-content-center text-center">
-    <div class="card col col-2 d-flex" >
-        <img class="card-img-top mt-2 hamster-bild" src="@Hamster1.ImgName" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">@Hamster1.Name</h5>
-            <p class="card-text">
-                Wins: @Hamster1.Wins
-                <br />
-                Defeats: @Hamster1.Defeats
-                <br />
-                Games: @Hamster1.Games
-            </p>
-        </div>
-    </div>
-    <div class="card col col-2 d-flex" >
-        <img class="card-img-top mt-2 hamster-bild" src="@Hamster2.ImgName" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">@Hamster2.Name</h5>
-            <p class="card-text">
-                Wins: @Hamster2.Wins
-                <br />
-                Defeats: @Hamster2.Defeats
-                <br />
-                Games: @Hamster2.Games
-            </p>
-
-        </div>
-    </div>
+    <HamsterComponent hamster="@Hamster1"></HamsterComponent>
+    <HamsterComponent hamster="@Hamster2"></HamsterComponent>
 </div>
+
 <div class="row justify-content-center text-center">
     <div class="card col col-sm-4 d-flex">
         
