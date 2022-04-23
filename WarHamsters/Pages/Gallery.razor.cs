@@ -17,18 +17,10 @@ namespace WarHamsters.Pages
             }
             else
             {
-                hamsters = await hamsterService.GetAllHamsters();
+                hamsters = await hamsterService.GetAllActiveHamsters();
             }
         }
-        //public async void Delete(int id)
-        //{
-        //    Hamster hamster = await hamsterService.GetHamsterById(id);
-        //    if (hamster != null)
-        //    {
-        //        hamsterService.DeleteHamster(hamster);
-        //        ShouldRender();
-        //    }
-        //}
+      
         public void GethamsterbySearch()
         {
 

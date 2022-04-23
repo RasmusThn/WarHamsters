@@ -29,6 +29,11 @@ public class HamsterService
     {
         return await _repo.GetHamsterById(id);
     }
+    public async Task<List<Hamster>> GetAllActiveHamsters()
+    {
+        var hamsters = _repo.GetAllActiveHamsters();
+        return await hamsters;
+    }
     public async Task<List<Hamster>> GetAllHamsters()
     {
         var hamsters = _repo.GetAllHamsters();
@@ -54,7 +59,6 @@ public class HamsterService
     {
         return await _repo.GetTwoRandomHamsters();
     }
-
     public async Task<List<Hamster>> Get5Hamsters(bool isTop)
     {
        var hamsters = _repo.Get5Hamsters(isTop);

@@ -69,7 +69,9 @@ public class HamsterRepository
     {
         using (var ctx = _factory.CreateDbContext())
         {
-            ctx.Hamsters.Remove(hamster);
+            //ctx.Hamsters.Remove(hamster);
+            hamster.IsActive = false;
+            ctx.Update(hamster);
             await ctx.SaveChangesAsync();
         }
 
@@ -98,14 +100,25 @@ public class HamsterRepository
             return data.ToList();
         }
     }
+    public async Task<List<Hamster>> GetAllActiveHamsters()
+    {
+        using (var ctx = _factory.CreateDbContext())
+        {
+
+            List<Hamster> hamsters = ctx.Hamsters.Where(x => x.IsActive == true).ToList();
+
+            return hamsters.ToList();
+        }
+
+    }
     public async Task<List<Hamster>> GetAllHamsters()
     {
         using (var ctx = _factory.CreateDbContext())
         {
 
-            var hamsters = await ctx.Hamsters.ToListAsync();
+            List<Hamster> hamsters = ctx.Hamsters.ToList();
 
-            return hamsters;
+            return hamsters.ToList();
         }
 
     }
@@ -115,13 +128,13 @@ public class HamsterRepository
         {
             if (isTop)
             {
-                var hamsters = ctx.Hamsters.OrderByDescending(x => x.Wins);
+                var hamsters = ctx.Hamsters.Where(x => x.IsActive == true).OrderByDescending(x => x.Wins);
                 List<Hamster> hamsters5 = hamsters.Take(5).ToList();
                 return hamsters5;
             }
             else
             {
-                var hamsters = ctx.Hamsters.OrderByDescending(x => x.Defeats);
+                var hamsters = ctx.Hamsters.Where(x => x.IsActive == true).OrderByDescending(x => x.Defeats);
                 List<Hamster> hamsters5 = hamsters.Take(5).ToList();
                 return hamsters5;
             }
@@ -147,6 +160,6 @@ public class HamsterRepository
         }
     }
 
-    
+
 }
 

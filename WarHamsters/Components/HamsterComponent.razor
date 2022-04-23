@@ -1,30 +1,30 @@
-﻿<div class="card col col-2 d-flex" >
-        <img class="card-img-top mt-2 hamster-bild" src="@Hamster.ImgName" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">@Hamster.Name</h5>
-            <p class="card-text">
-                Wins: @Hamster.Wins
-                <br />
-                Defeats: @Hamster.Defeats
-                <br />
-                Games: @Hamster.Games
-                @if (IsProfile)
-                {
-                   <span>
+﻿<div class="card col col-2 d-flex">
+    <img class="card-img-top mt-2 hamster-bild" src="@Hamster.ImgName" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Hamster.Name</h5>
+        <p class="card-text">
+            Wins: @Hamster.Wins
+            <br />
+            Defeats: @Hamster.Defeats
+            <br />
+            Games: @Hamster.Games
+            @if (IsProfile)
+            {
+                <span>
                     <br />
                     Favourite Food: @Hamster.FavFood
                     <br />
                     Loves: @Hamster.Loves
                 </span>
-                }
-            </p>
-        </div>
+            }
+        </p>
     </div>
+</div>
 
 
 @code {
     [Parameter]
-    public Hamster Hamster{ get; set; }
+    public Hamster Hamster { get; set; }
     [Parameter]
     public bool IsProfile { get; set; } = false;
 }

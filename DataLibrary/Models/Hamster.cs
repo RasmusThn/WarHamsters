@@ -16,4 +16,5 @@ public class Hamster
     public int Wins { get; set; } = 0;
     public int Defeats { get; set; } = 0;
     public int Games { get; set; } = 0;
+    public bool IsActive { get; set; } = true;
 }

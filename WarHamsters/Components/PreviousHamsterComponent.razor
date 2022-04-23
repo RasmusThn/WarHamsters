@@ -13,7 +13,11 @@
                 <h4>Match Won by: @Hamster1.Name !</h4>
             </div>
             <div class="card-body">
-                <p>% procent många håller med dig och tycker @Hamster1.Name är coolare än @Hamster2.Name</p>
+                <p> @Hamster1.Name has a winning procent of @_hamster1Procent % 
+                    <br />
+                    @Hamster2.Name has a winning procent of @_hamster2Procent % 
+                
+                </p>
             </div>
         
     </div>
@@ -26,4 +30,13 @@
     public Hamster Hamster2 { get; set; }
     [Parameter]
     public Match match { get; set; }
+    private int _hamster1Procent;
+    private int _hamster2Procent;
+
+    protected override void OnInitialized() //Räknar nog inte varje gång...
+    {
+        _hamster1Procent = (Hamster1.Wins / Hamster1.Games) * 100;
+        _hamster2Procent = (Hamster2.Wins / Hamster2.Games) * 100;
+        
+    }
 }

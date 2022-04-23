@@ -45,6 +45,9 @@ namespace DataLibrary.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Loves")
                         .HasColumnType("nvarchar(max)");
 
@@ -68,6 +71,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Pizza",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-9.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Rasmus",
                             Wins = 0
@@ -80,6 +84,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Fika",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-8.jpg",
+                            IsActive = true,
                             Loves = "Meetings",
                             Name = "Jimmy",
                             Wins = 0
@@ -92,6 +97,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Pancakes",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-7.jpg",
+                            IsActive = true,
                             Loves = "Intellisense",
                             Name = "Claes",
                             Wins = 0
@@ -104,6 +110,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Korv",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-1.jpg",
+                            IsActive = true,
                             Loves = "Korvar",
                             Name = "Korven",
                             Wins = 0
@@ -116,6 +123,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-2.jpg",
+                            IsActive = true,
                             Loves = "Jumping",
                             Name = "Patrik",
                             Wins = 0
@@ -128,6 +136,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-3.jpg",
+                            IsActive = true,
                             Loves = "Kvivksilver",
                             Name = "Pontus",
                             Wins = 0
@@ -140,6 +149,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-4.jpg",
+                            IsActive = true,
                             Loves = "Berras Bio",
                             Name = "Mikael",
                             Wins = 0
@@ -152,6 +162,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-5.jpg",
+                            IsActive = true,
                             Loves = "Träd",
                             Name = "Bävern",
                             Wins = 0
@@ -164,6 +175,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Blötmat",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-6.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Kattis",
                             Wins = 0
@@ -176,6 +188,7 @@ namespace DataLibrary.Migrations
                             FavFood = "FUZEON",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-10.jpg",
+                            IsActive = true,
                             Loves = "Kids",
                             Name = "Hyaena",
                             Wins = 0
@@ -188,6 +201,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-11.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Kingfisher",
                             Wins = 0
@@ -200,6 +214,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-12.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Robin",
                             Wins = 0
@@ -212,6 +227,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-13.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Lynx",
                             Wins = 0
@@ -224,6 +240,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-14.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Duck",
                             Wins = 0
@@ -236,6 +253,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Blötmat",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-15.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Rhinoceros",
                             Wins = 0
@@ -248,6 +266,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-16.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Red",
                             Wins = 0
@@ -260,6 +279,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-17.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Gazelle",
                             Wins = 0
@@ -272,6 +292,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-18.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Dragon",
                             Wins = 0
@@ -284,6 +305,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Blötmat",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-19.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Lourie",
                             Wins = 0
@@ -296,6 +318,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-20.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Squirrel",
                             Wins = 0
@@ -308,6 +331,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-21.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Carmine",
                             Wins = 0
@@ -320,6 +344,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-22.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Snake",
                             Wins = 0
@@ -332,6 +357,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-23.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Bear",
                             Wins = 0
@@ -344,6 +370,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-24.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Chickadee",
                             Wins = 0
@@ -356,6 +383,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-25.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Vervet ",
                             Wins = 0
@@ -368,6 +396,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-26.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Malagasy ",
                             Wins = 0
@@ -380,6 +409,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-27.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Malleefowl",
                             Wins = 0
@@ -392,6 +422,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Bark",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-28.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Desert",
                             Wins = 0
@@ -404,6 +435,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-29.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Kaffir",
                             Wins = 0
@@ -416,6 +448,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-30.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Nubian ",
                             Wins = 0
@@ -428,6 +461,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-31.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Macaw",
                             Wins = 0
@@ -440,6 +474,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Blötmat",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-32.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Woodcock",
                             Wins = 0
@@ -452,6 +487,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-33.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Eurasian",
                             Wins = 0
@@ -464,6 +500,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Gräs",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-34.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Mynah",
                             Wins = 0
@@ -476,6 +513,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-35.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Sportive",
                             Wins = 0
@@ -488,6 +526,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Gräs",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-36.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Marten",
                             Wins = 0
@@ -500,6 +539,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-37.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Malagasy",
                             Wins = 0
@@ -512,6 +552,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Popcorn",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-38.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Grey ",
                             Wins = 0
@@ -524,6 +565,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Gräs",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-39.jpg",
+                            IsActive = true,
                             Loves = "Lekar",
                             Name = "Bear",
                             Wins = 0
@@ -536,6 +578,7 @@ namespace DataLibrary.Migrations
                             FavFood = "Sallad",
                             Games = 0,
                             ImgName = "/images/hamsters/hamster-40.jpg",
+                            IsActive = true,
                             Loves = "Hjulet",
                             Name = "Four",
                             Wins = 0

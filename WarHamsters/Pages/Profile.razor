@@ -1,0 +1,18 @@
+﻿@page "/profile/{hamsterId}/{oldpage}"
+@inject NavigationManager navigation;
+@inject HamsterService hamsterService;
+
+<h3>Profile for @hamster.Name</h3>
+<HamsterComponent Hamster="@hamster" IsProfile="Isprofile"></HamsterComponent>
+
+
+<button @onclick="GoBack" class="btn btn-secondary">Back</button>
+<button @onclick="(x => Delete(hamster.Id))" class="btn btn-danger">Delete</button>
+
+<button @onclick="ShowMatches" class="btn btn-primary">@_ShowHide Matches</button>
+@if (_showMatches)
+{
+    
+<MatchComponent Hamster="@hamster"></MatchComponent>
+}
+
