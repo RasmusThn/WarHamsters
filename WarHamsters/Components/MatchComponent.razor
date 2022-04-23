@@ -1,5 +1,24 @@
 ﻿<h3>MatchComponent</h3>
+@using DataLibrary.Services
+@inject MatchService matchservice
+
+@foreach (var match in matches)
+{
+     <div>   
+    Id: @match.Id
+    Winner: @match.WinnerId
+    Looser: @match.LoserId
+</div>
+}
+
 
 @code {
-    //Visa matchen och resultat? 
+    [Parameter]
+    public Hamster Hamster { get; set; }
+    private List<Match> matches;
+
+    protected override async Task OnInitializedAsync()
+    {
+        matches = await matchservice.GetAllMatchesByHamsterId(Hamster.Id);
+    }
 }

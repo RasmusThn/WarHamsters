@@ -14,6 +14,8 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddScoped<HamsterService>();
 builder.Services.AddScoped<HamsterRepository>();
+builder.Services.AddScoped<MatchService>();
+builder.Services.AddScoped<MatchRepository>();
 var cs = builder.Configuration.GetConnectionString("Default");
 
 builder.Services.AddDbContextFactory<DataContext>(opt => opt.UseSqlServer(cs));

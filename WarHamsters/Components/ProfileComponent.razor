@@ -9,7 +9,7 @@
 <button @onclick="GoBack" class="btn btn-secondary">Back</button>
 <button @onclick="(x => Delete(hamster.Id))" class="btn btn-danger">Delete</button>
 
-
+<MatchComponent Hamster="@hamster"></MatchComponent>
 @code {
     [Parameter]
     public string hamsterId { get; set; }

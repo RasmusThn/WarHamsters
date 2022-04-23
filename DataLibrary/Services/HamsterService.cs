@@ -60,4 +60,5 @@ public class HamsterService
        var hamsters = _repo.Get5Hamsters(isTop);
         return await hamsters;
     }
+  
 }
