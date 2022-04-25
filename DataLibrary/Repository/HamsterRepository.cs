@@ -55,15 +55,15 @@ public class HamsterRepository
             return hamsters.ToList();
         }
     }
-    public bool AddHamster(Hamster hamster)
+    public async Task AddHamster(Hamster hamster)
     {
         using (var ctx = _factory.CreateDbContext())
         {
             ctx.Hamsters.Add(hamster);
-            ctx.SaveChangesAsync();
-            return true;
+           await ctx.SaveChangesAsync();
+           
         }
-        return false;
+        
     }
     public async void DeleteHamster(Hamster hamster)
     {

@@ -21,7 +21,7 @@ namespace WarHamsters.Pages
             hamster = await hamsterService.GetHamsterById(id);
 
         }
-        public void Delete(int id)
+        public void Delete(Hamster hamster)
         {
 
             hamsterService.DeleteHamster(hamster);
@@ -65,7 +65,7 @@ namespace WarHamsters.Pages
             DeleteDialogOpen = false;
             if (accepted)
             {
-                Delete(hamster.Id);
+                Delete(hamster);
             }
             StateHasChanged();
         }

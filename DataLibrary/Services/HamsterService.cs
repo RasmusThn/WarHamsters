@@ -20,10 +20,10 @@ public class HamsterService
         
         await _repo.AddWin(hamsterWin, hamsterLoss);
     }
-    public bool AddHamster(Hamster hamster)
+    public Task AddHamster(Hamster hamster)
     {
-        bool isOk = _repo.AddHamster(hamster);
-        return isOk;
+       return _repo.AddHamster(hamster);
+        
     }
     public async Task<Hamster> GetHamsterById(int id)
     {

@@ -3,7 +3,7 @@
 @inject NavigationManager navigate;
 <PageTitle>All Hamsters</PageTitle>
 
-@*<SearchComponent></SearchComponent> Söker inte på sidan*@
+
 <div class="container card" style="width: 18rem;">
     <div class="form-group card-body">
         <input class="form-control"
@@ -22,28 +22,18 @@
         <tr>
             <th>Name</th>
             <th></th>
-            @*<th>Age</th>
-            <th>FavFood</th>
-            <th>Loves</th>
-            <th>Wins</th>
-            <th>Defeats</th>
-            <th>Games</th>*@
         </tr>
     </thead>
     <tbody>
         @foreach (var hamster in hamsters)
-        {
+        {@if (hamster.IsActive)
+         {
+             
             <tr>
                 <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
-               @* <td>@hamster.Age</td>
-                <td>@hamster.FavFood</td>
-                <td>@hamster.Loves</td>
-                <td>@hamster.Wins</td>
-                <td>@hamster.Defeats</td>
-                <td>@hamster.Games</td>*@
                 <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
-                @*<td><button @onclick="(x => Delete(hamster.Id))" class="btn btn-danger">Delete</button></td>*@
             </tr>
+         }
         }
     </tbody>
 </table>
