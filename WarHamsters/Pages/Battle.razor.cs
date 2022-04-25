@@ -9,12 +9,15 @@ public partial class Battle : ComponentBase
     private Hamster OldHamster2;
     private Hamster hamster1;
     private Hamster hamster2;
+    private double hamster1Procent;
+    private double hamster2Procent;
     public List<Hamster> Hamsters { get; set; } = new List<Hamster>();
 
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
         await hamsterService.AddWin(hamsterWin, hamsterLoss);
         await hamsterService.AddNewMatch(hamsterWin, hamsterLoss);
+       
         RunAgain(hamsterWin, hamsterLoss);
 
     }
@@ -22,6 +25,8 @@ public partial class Battle : ComponentBase
     {
         OldHamster1 = hamsterWin;
         OldHamster2 = hamsterLoss;
+        hamster1Procent = CalculateProcent(hamsterWin);
+        hamster2Procent = CalculateProcent(hamsterLoss);
         GetTwoRandomHamsters();
         StateHasChanged(); //Här laddas det om
     }
@@ -34,6 +39,11 @@ public partial class Battle : ComponentBase
         {
             GetTwoRandomHamsters();
         }
+    }
+    private double CalculateProcent(Hamster hamster)
+    {
+        double sum =((double)hamster.Wins / (double)hamster.Games) * 100d;
+        return sum;
     }
     protected override void OnInitialized()
     {

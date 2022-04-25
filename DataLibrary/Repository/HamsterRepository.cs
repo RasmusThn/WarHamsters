@@ -94,6 +94,7 @@ public class HamsterRepository
                 list[n] = value;
             }
             List<Hamster> data = list
+                    .Where(h => h.IsActive == true)
                     .Take(2)
                     .ToList();
 

@@ -14,6 +14,7 @@ namespace WarHamsters.Pages
         private bool _showMatches = false;
         private string _ShowHide = "Show";
         private bool Isprofile { get; set; } = true;
+        public bool DeleteDialogOpen { get; set; }
         protected async override void OnInitialized()
         {
             int id = int.Parse(hamsterId);
@@ -37,6 +38,10 @@ namespace WarHamsters.Pages
             {
                 navigation.NavigateTo("/low5");
             }
+            else if (oldpage == "battle")
+            {
+                navigation.NavigateTo("/battle");
+            }
             else
             {
                 navigation.NavigateTo("/gallery");
@@ -54,6 +59,20 @@ namespace WarHamsters.Pages
                 _showMatches = true;
                 _ShowHide = "Hide";
             }
+        }
+        private async Task OnDeleteDialogClose(bool accepted)
+        {
+            DeleteDialogOpen = false;
+            if (accepted)
+            {
+                Delete(hamster.Id);
+            }
+            StateHasChanged();
+        }
+        private void OpenDeleteDialog()
+        {
+            DeleteDialogOpen = true;
+            StateHasChanged();
         }
     }
 }

@@ -13,10 +13,9 @@
                 <h4>Match Won by: @Hamster1.Name !</h4>
             </div>
             <div class="card-body">
-                <p> @Hamster1.Name has a winning procent of @_hamster1Procent % 
+                <p> @Hamster1.Name has a winning procent of @Hamster1Procent.ToString("n2") % 
                     <br />
-                    @Hamster2.Name has a winning procent of @_hamster2Procent % 
-                
+                    @Hamster2.Name has a winning procent of @Hamster2Procent.ToString("n2") % 
                 </p>
             </div>
         
@@ -30,13 +29,10 @@
     public Hamster Hamster2 { get; set; }
     [Parameter]
     public Match match { get; set; }
-    private int _hamster1Procent;
-    private int _hamster2Procent;
+    [Parameter]
+    public double Hamster1Procent { get; set; }
+    [Parameter]
+    public double Hamster2Procent { get; set; }
 
-    protected override void OnInitialized() //Räknar nog inte varje gång...
-    {
-        _hamster1Procent = (Hamster1.Wins / Hamster1.Games) * 100;
-        _hamster2Procent = (Hamster2.Wins / Hamster2.Games) * 100;
-        
-    }
+   
 }

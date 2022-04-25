@@ -1,4 +1,4 @@
-﻿@page "/Battle"
+﻿@page "/battle"
 
 @using DataLibrary.Models
 @using DataLibrary.Services
@@ -37,5 +37,7 @@
 @if (OldHamster1 != null && OldHamster2 != null)
 {
     
-<PreviousHamsterComponent Hamster1="OldHamster1" Hamster2="OldHamster2"></PreviousHamsterComponent>
+<PreviousHamsterComponent Hamster1="OldHamster1" Hamster2="OldHamster2" 
+Hamster1Procent="hamster1Procent" Hamster2Procent="hamster2Procent">
+</PreviousHamsterComponent>
 }
