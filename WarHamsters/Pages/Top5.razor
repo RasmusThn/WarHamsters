@@ -1,5 +1,5 @@
 ﻿@page "/top5"
-
+<PageTitle>Top 5</PageTitle>
 @inject HamsterService hamsterService;
 
 <h3>Top5</h3>
@@ -12,24 +12,21 @@
             <th>Wins</th>
             <th>Defeats</th>
             <th>Games</th>
-            
         </tr>
     </thead>
     <tbody>
         @if (Hamsters != null)
         {
-            
-        
-        @foreach (var hamster in Hamsters)
-        {
-            <tr>
-                <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
-                <td>@hamster.Wins</td>
-                <td>@hamster.Defeats</td>
-                <td>@hamster.Games</td>
-                <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
-            </tr>
-        }
+            @foreach (var hamster in Hamsters)
+            {
+                <tr>
+                    <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
+                    <td>@hamster.Wins</td>
+                    <td>@hamster.Defeats</td>
+                    <td>@hamster.Games</td>
+                    <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
+                </tr>
+            }
         }
     </tbody>
 </table>

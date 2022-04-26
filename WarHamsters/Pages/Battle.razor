@@ -1,5 +1,7 @@
 ﻿@page "/battle"
 
+<PageTitle>Battle between @hamster1.Name and @hamster2.Name</PageTitle>
+
 @using DataLibrary.Models
 @using DataLibrary.Services
 @inject HamsterService hamsterService;
@@ -8,8 +10,8 @@
 <div class="row justify-content-center text-center" >
 <h2><strong>Click on the cutest Hamster!</strong></h2>
    
-<div class="card col col-4 d-flex" style="width: 25rem;">
-    <img class="card-img-top btn hamster-bild" @onclick="@(x => AddWin(hamster1,@hamster2))" src="@hamster1.ImgName" alt="Card image cap">
+<div class="card col col-sm-4 d-flex" style="width: 25rem;">
+    <img class="card-img-top btn hamster-bild" @onclick="@(x => AddWin(hamster1,@hamster2))" src="@hamster1.ImgName" alt="...">
     <div class="card-body">
         <h5 class="card-title">@hamster1.Name</h5>
         <p class="card-text">
@@ -19,8 +21,8 @@
         </p>
     </div>
 </div>
-<div class="card col col-4 d-flex" style="width: 25rem;">
-    <img class="card-img-top btn hamster-bild" @onclick="@(x => AddWin(@hamster2,hamster1))"  src="@hamster2.ImgName" alt="Card image cap">
+<div class="card col col-sm-4 d-flex" style="width: 25rem;">
+    <img class="card-img-top btn hamster-bild" @onclick="@(x => AddWin(@hamster2,hamster1))"  src="@hamster2.ImgName" alt="...">
     <div class="card-body">
         <h5 class="card-title">@hamster2.Name</h5>
         <p class="card-text">
