@@ -7,18 +7,18 @@ namespace WarHamsters.Pages
     {
        
         [Parameter]
-        public string hamsterId { get; set; }
+        public string HamsterId { get; set; }
         [Parameter]
-        public string oldpage { get; set; }
-        private Hamster hamster;
+        public string? Oldpage { get; set; }
+        private Hamster _hamster;
         private bool _showMatches = false;
         private string _ShowHide = "Show";
         private bool Isprofile { get; set; } = true;
         public bool DeleteDialogOpen { get; set; }
-        protected async override void OnInitialized()
+        protected override void OnInitialized()
         {
-            int id = int.Parse(hamsterId);
-            hamster = await hamsterService.GetHamsterById(id);
+            int id = int.Parse(HamsterId);
+            _hamster = hamsterService.GetHamsterById(id);
 
         }
         public void Delete(Hamster hamster)
@@ -30,15 +30,15 @@ namespace WarHamsters.Pages
         }
         public void GoBack()
         {
-            if (oldpage == "top5")
+            if (Oldpage == "top5")
             {
                 navigation.NavigateTo("/top5");
             }
-            else if (oldpage == "low5")
+            else if (Oldpage == "low5")
             {
                 navigation.NavigateTo("/low5");
             }
-            else if (oldpage == "battle")
+            else if (Oldpage == "battle")
             {
                 navigation.NavigateTo("/battle");
             }
@@ -60,12 +60,12 @@ namespace WarHamsters.Pages
                 _ShowHide = "Hide";
             }
         }
-        private async Task OnDeleteDialogClose(bool accepted)
+        private void OnDeleteDialogClose(bool accepted)
         {
             DeleteDialogOpen = false;
             if (accepted)
             {
-                Delete(hamster);
+                Delete(_hamster);
             }
             StateHasChanged();
         }

@@ -1,0 +1,58 @@
+﻿@page "/Add"
+@inject HamsterService hamsterService;
+
+<div class="card" style="width: 18rem;">
+    <h3>Add Hamster</h3>
+    
+    <EditForm Model="Hamster" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div class="form-group">
+            <label for="@Hamster.Name">Name</label>
+            <input @bind-value="@Hamster.Name" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="@Hamster.Age">Age</label>
+            <select @bind="@Hamster.Age" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                @*Dem Blir typ aldrig äldre än 5 ändå. RIP*@
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="@Hamster.FavFood">Favourite Food</label>
+            <input @bind-value="@Hamster.FavFood" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="@Hamster.Loves">Loves</label>
+            <input @bind-value="@Hamster.Loves" type="text" class="form-control">
+        </div>
+
+        <label for="@Hamster.ImgName">Choose Image</label>
+        <div class="input-group mb-3">
+            <select @onchange="ShowImg" class="form-control">
+                @for (var i = 1; i <= 40; i++) //hård-kodat för dem 40 statiska bilder vi har
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+        <div>
+            <img class="hamster-bild" src="@CompleteSrc" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </EditForm>
+    @if (IsSuccess)
+    {
+
+        <h3 class="text-success p-2">@FormSubmitMessage</h3>
+    }
+    else
+    {
+        <h3 class="text-danger p-2">@FormSubmitMessage</h3>
+    }
+</div>
+

@@ -5,8 +5,8 @@ namespace WarHamsters.Pages;
 
 public partial class Battle : ComponentBase
 {
-    private Hamster OldHamster1;
-    private Hamster OldHamster2;
+    private Hamster oldHamster1;
+    private Hamster oldHamster2;
     private Hamster hamster1;
     private Hamster hamster2;
     private double hamster1Procent;
@@ -16,31 +16,27 @@ public partial class Battle : ComponentBase
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
         await hamsterService.AddWin(hamsterWin, hamsterLoss);
-        await hamsterService.AddNewMatch(hamsterWin, hamsterLoss);
+        await matchService.AddNewMatch(hamsterWin, hamsterLoss);
        
         RunAgain(hamsterWin, hamsterLoss);
 
     }
     public void RunAgain(Hamster hamsterWin, Hamster hamsterLoss)
     {
-        OldHamster1 = hamsterWin;
-        OldHamster2 = hamsterLoss;
+        oldHamster1 = hamsterWin;
+        oldHamster2 = hamsterLoss;
         hamster1Procent = CalculateProcent(hamsterWin);
         hamster2Procent = CalculateProcent(hamsterLoss);
         GetTwoRandomHamsters();
         StateHasChanged(); //Här laddas det om
     }
-    public async void GetTwoRandomHamsters()
+    public void GetTwoRandomHamsters()
     {
-        Hamsters = await hamsterService.GetTwoRandomHamsters();
+        Hamsters = hamsterService.GetTwoRandomHamsters();
         hamster1 = Hamsters[0];
         hamster2 = Hamsters[1];
-        while (OldHamster1 == hamster1 || OldHamster1 == hamster2 || OldHamster2 == hamster1 || OldHamster2 == hamster2) // kolla mer på denna... säger aldrig ifrån
-        {
-            GetTwoRandomHamsters();
-        }
     }
-    private double CalculateProcent(Hamster hamster)
+    private static double CalculateProcent(Hamster hamster)
     {
         double sum =((double)hamster.Wins / (double)hamster.Games) * 100d;
         return sum;

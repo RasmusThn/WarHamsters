@@ -9,7 +9,7 @@ public class MatchRepository
     {
         _factory = factory;
     }
-    public async Task<List<Match>> GetAllMatchesByHamsterId(int hamsterId)
+    public List<Match> GetAllMatchesByHamsterId(int hamsterId)
     {
 
         using (var ctx = _factory.CreateDbContext())
@@ -17,6 +17,19 @@ public class MatchRepository
             List<Match> matches = ctx.Matches.Where(x => x.WinnerId == hamsterId || x.LoserId == hamsterId).ToList();
 
             return matches;
+        }
+    }
+    public async Task AddNewMatch(Hamster hamsterWin, Hamster hamsterLoss)
+    {
+        using (var ctx = _factory.CreateDbContext())
+        {
+            Match match = new Match
+            {
+                WinnerId = hamsterWin.Id,
+                LoserId = hamsterLoss.Id
+            };
+            ctx.Matches.Add(match);
+            await ctx.SaveChangesAsync();
         }
     }
 }

@@ -2,8 +2,8 @@
 @inject NavigationManager navigation;
 @inject HamsterService hamsterService;
 
-<h3>Profile for @hamster.Name</h3>
-<HamsterComponent Hamster="@hamster" IsProfile="Isprofile"></HamsterComponent>
+<h3>Profile for @_hamster.Name</h3>
+<HamsterComponent Hamster="@_hamster" IsProfile="Isprofile"></HamsterComponent>
 
 
 <button @onclick="GoBack" class="btn btn-secondary">Back</button>
@@ -13,13 +13,13 @@
 @if (_showMatches)
 {
     
-<MatchComponent Hamster="@hamster"></MatchComponent>
+<MatchComponent Hamster="@_hamster"></MatchComponent>
 }
 
 @*---Modal----*@
 @if (DeleteDialogOpen)
 {
-    <ModalComponent hamster="hamster"
+    <ModalComponent hamster="_hamster"
                     OnClose="@OnDeleteDialogClose">
     </ModalComponent>
 }

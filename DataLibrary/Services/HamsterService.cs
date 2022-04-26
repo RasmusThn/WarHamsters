@@ -11,10 +11,7 @@ public class HamsterService
     {
         _repo = repo;
     }
-    public async Task AddNewMatch(Hamster hamsterWin,Hamster hamsterLoss)
-    {
-        await _repo.AddNewMatch(hamsterWin, hamsterLoss);
-    }
+   
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
         
@@ -25,19 +22,19 @@ public class HamsterService
        return _repo.AddHamster(hamster);
         
     }
-    public async Task<Hamster> GetHamsterById(int id)
+    public Hamster GetHamsterById(int id)
     {
-        return await _repo.GetHamsterById(id);
+        return _repo.GetHamsterById(id);
     }
-    public async Task<List<Hamster>> GetAllActiveHamsters()
+    public List<Hamster> GetAllActiveHamsters()
     {
         var hamsters = _repo.GetAllActiveHamsters();
-        return await hamsters;
+        return hamsters;
     }
-    public async Task<List<Hamster>> GetAllHamsters()
+    public List<Hamster> GetAllHamsters()
     {
         var hamsters = _repo.GetAllHamsters();
-        return await hamsters;
+        return hamsters;
     }
     /// <summary>
     /// Returns true if there are any Hamsters in the Database
@@ -55,14 +52,14 @@ public class HamsterService
     {
         return _repo.GetHamsterBySearch(searchTerm);
     }
-    public async Task<List<Hamster>> GetTwoRandomHamsters()
+    public List<Hamster> GetTwoRandomHamsters()
     {
-        return await _repo.GetTwoRandomHamsters();
+        return _repo.GetTwoRandomHamsters();
     }
-    public async Task<List<Hamster>> Get5Hamsters(bool isTop)
+    public List<Hamster> Get5Hamsters(bool isTop)
     {
-       var hamsters = _repo.Get5Hamsters(isTop);
-        return await hamsters;
+        var hamsters = _repo.Get5Hamsters(isTop);
+        return hamsters;
     }
-  
+
 }

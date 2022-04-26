@@ -33,10 +33,10 @@
 @code {
     private List<Hamster> Hamsters;
     private string url = "low5";
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         bool isTop = false;
-        Hamsters = await hamsterService.Get5Hamsters(isTop);
+        Hamsters = hamsterService.Get5Hamsters(isTop);
 
     }
 }

@@ -11,19 +11,7 @@ public class HamsterRepository
         _factory = factory;
         //var ctx = _factory.CreateDbContext(); Testa om detta funkar nån gång/ fråga om det är rätt att göra så
     }
-    public async Task AddNewMatch(Hamster hamsterWin, Hamster hamsterLoss)
-    {
-        using (var ctx = _factory.CreateDbContext())
-        {
-            Match match = new Match
-            {
-                WinnerId = hamsterWin.Id,
-                LoserId = hamsterLoss.Id
-            };
-            ctx.Matches.Add(match);
-            await ctx.SaveChangesAsync();
-        }
-    }
+   
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
         using (var ctx = _factory.CreateDbContext())
@@ -37,7 +25,7 @@ public class HamsterRepository
 
         }
     }
-    public async Task<Hamster> GetHamsterById(int id)
+    public Hamster GetHamsterById(int id)
     {
         using (var ctx = _factory.CreateDbContext())
         {
@@ -76,7 +64,7 @@ public class HamsterRepository
         }
 
     }
-    public async Task<List<Hamster>> GetTwoRandomHamsters()
+    public List<Hamster> GetTwoRandomHamsters()
     {
         using (var ctx = _factory.CreateDbContext())
         {
@@ -101,7 +89,7 @@ public class HamsterRepository
             return data.ToList();
         }
     }
-    public async Task<List<Hamster>> GetAllActiveHamsters()
+    public List<Hamster> GetAllActiveHamsters()
     {
         using (var ctx = _factory.CreateDbContext())
         {
@@ -112,7 +100,7 @@ public class HamsterRepository
         }
 
     }
-    public async Task<List<Hamster>> GetAllHamsters()
+    public List<Hamster> GetAllHamsters()
     {
         using (var ctx = _factory.CreateDbContext())
         {
@@ -123,7 +111,7 @@ public class HamsterRepository
         }
 
     }
-    public async Task<List<Hamster>> Get5Hamsters(bool isTop)
+    public List<Hamster> Get5Hamsters(bool isTop)
     {
         using (var ctx = _factory.CreateDbContext())
         {

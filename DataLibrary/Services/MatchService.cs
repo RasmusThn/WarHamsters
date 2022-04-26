@@ -14,9 +14,13 @@ namespace DataLibrary.Services
         {
             _repo = repo;
         }
-        public async Task<List<Match>> GetAllMatchesByHamsterId(int hamsterId)
+        public List<Match> GetAllMatchesByHamsterId(int hamsterId)
         {
-           return await _repo.GetAllMatchesByHamsterId(hamsterId);
+            return _repo.GetAllMatchesByHamsterId(hamsterId);
+        }
+        public async Task AddNewMatch(Hamster hamsterWin, Hamster hamsterLoss)
+        {
+            await _repo.AddNewMatch(hamsterWin, hamsterLoss);
         }
     }
 }

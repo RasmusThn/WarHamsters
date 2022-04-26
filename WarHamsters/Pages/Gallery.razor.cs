@@ -5,11 +5,11 @@ namespace WarHamsters.Pages
 {
     public partial class Gallery : ComponentBase
     {
-        private string searchTerm { get; set; } = string.Empty;
+        private string SearchTerm { get; set; } = string.Empty;
         private List<Hamster> hamsters = new List<Hamster>();
-        private string url = "gallery";
+        private readonly string url = "gallery";
 
-        protected override async Task OnInitializedAsync()
+        protected override void OnInitialized()
         {
             if (!hamsterService.CheckDatabaseForHamsters())
             {
@@ -17,14 +17,14 @@ namespace WarHamsters.Pages
             }
             else
             {
-                hamsters = await hamsterService.GetAllActiveHamsters();
+                hamsters = hamsterService.GetAllActiveHamsters();
             }
         }
-      
+
         public void GethamsterbySearch()
         {
 
-            hamsters = hamsterService.GetHamsterBySearch(searchTerm);
+            hamsters = hamsterService.GetHamsterBySearch(SearchTerm);
 
         }
         
