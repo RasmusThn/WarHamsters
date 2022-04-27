@@ -11,16 +11,16 @@ public class HamsterService
     {
         _repo = repo;
     }
-   
+
     public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
     {
-        
+
         await _repo.AddWin(hamsterWin, hamsterLoss);
     }
     public Task AddHamster(Hamster hamster)
     {
-       return _repo.AddHamster(hamster);
-        
+        return _repo.AddHamster(hamster);
+
     }
     public Hamster GetHamsterById(int id)
     {
@@ -28,7 +28,10 @@ public class HamsterService
     }
     public List<Hamster> GetAllActiveHamsters()
     {
-        var hamsters = _repo.GetAllActiveHamsters();
+        var hamsters = _repo.GetAllHamsters();
+
+        hamsters.Where(x => x.IsActive == true).ToList();
+
         return hamsters;
     }
     public List<Hamster> GetAllHamsters()
@@ -50,16 +53,52 @@ public class HamsterService
     }
     public List<Hamster> GetHamsterBySearch(string searchTerm)
     {
-        return _repo.GetHamsterBySearch(searchTerm);
+        var Allhamsters = _repo.GetAllHamsters();
+        var searchHamsters = Allhamsters.Where(p => string.IsNullOrEmpty(searchTerm)
+           || p.Name.ToLower().Contains(searchTerm.ToLower()));
+        return searchHamsters.ToList();
+        //return _repo.GetHamsterBySearch(searchTerm);
     }
     public List<Hamster> GetTwoRandomHamsters()
     {
-        return _repo.GetTwoRandomHamsters();
+        var hamsters = _repo.GetAllHamsters();
+        //return _repo.GetTwoRandomHamsters();
+        Random rnd = new Random();
+        int n = hamsters.Count();
+        hamsters.ToList();
+
+        // Plockat från Stackoverflow/google --https://blog.codinghorror.com/shuffling/ via Patrik S.
+        while (n > 1)
+        {
+            int k = (rnd.Next(0, n) % n);
+            n--;
+            Hamster value = hamsters[k];
+            hamsters[k] = hamsters[n];
+            hamsters[n] = value;
+        }
+        List<Hamster> twoHamsters = hamsters
+                .Where(h => h.IsActive == true)
+                .Take(2)
+                .ToList();
+
+        return twoHamsters.ToList();
     }
     public List<Hamster> Get5Hamsters(bool isTop)
     {
-        var hamsters = _repo.Get5Hamsters(isTop);
-        return hamsters;
+        var hamsters = _repo.GetAllHamsters();
+        if (isTop)
+        {
+          var hamstersOrdered = hamsters.Where(x => x.IsActive == true).OrderByDescending(x => x.Wins);
+            List<Hamster> hamsters5 = hamstersOrdered.Take(5).ToList();
+            return hamsters5;
+        }
+        else
+        {
+            var hamstersOrdered = hamsters.Where(x => x.IsActive == true).OrderByDescending(x => x.Defeats);
+            List<Hamster> hamsters5 = hamstersOrdered.Take(5).ToList();
+            return hamsters5;
+        }
+        
     }
 
 }
