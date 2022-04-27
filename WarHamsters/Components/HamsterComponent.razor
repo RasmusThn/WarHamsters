@@ -1,7 +1,12 @@
-﻿<div class="card col col-sm-2 d-flex card-goodies3">
-    <img class="card-img-top mt-2 hamster-bild " src="@Hamster.ImgName" alt="Card image cap">
+﻿
+
+<a class="col btn col-sm-4" href="/profile/@Hamster.Id.ToString()/@url">
+<div class="card d-flex card-goodies card-hover" 
+style="background-color:yellowgreen">
+    <img class="card-img-top mt-2 hamster-bild-small " 
+    src="@Hamster.ImgName" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title"><a href="/profile/@Hamster.Id.ToString()/@url">@Hamster.Name</a></h5>
+        <h5 class="card-title">@Hamster.Name</h5>
         <p class="card-text">
             Wins: @Hamster.Wins
             <br />
@@ -21,6 +26,7 @@
     </div>
 </div>
 
+</a>
 
 @code {
     [Parameter]

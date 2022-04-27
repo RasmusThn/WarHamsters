@@ -13,14 +13,30 @@ public partial class Battle : ComponentBase
     private double hamster2Procent;
     public List<Hamster> Hamsters { get; set; } = new List<Hamster>();
 
-    public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
+    public async Task Update(Hamster hamsterWin, Hamster hamsterLoss)
     {
-        await hamsterService.AddWin(hamsterWin, hamsterLoss);
+        
+        await AddWin(hamsterWin);
+        await AddLoss(hamsterLoss);
+        //await hamsterService.AddWin(hamsterWin, hamsterLoss);
+        await hamsterService.UpdateHamster(hamsterWin);
+        await hamsterService.UpdateHamster(hamsterLoss);
         await matchService.AddNewMatch(hamsterWin, hamsterLoss);
        
         RunAgain(hamsterWin, hamsterLoss);
 
     }
+    public async Task AddWin(Hamster hamsterWin)
+    {
+        hamsterWin.Wins++;
+        hamsterWin.Games++;
+    }
+    public async Task AddLoss(Hamster hamsterLoss)
+    {
+        hamsterLoss.Defeats++;
+        hamsterLoss.Games++;
+    }
+
     public void RunAgain(Hamster hamsterWin, Hamster hamsterLoss)
     {
         oldHamster1 = hamsterWin;

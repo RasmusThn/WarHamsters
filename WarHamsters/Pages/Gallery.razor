@@ -5,11 +5,11 @@
 
 <PageTitle>All Hamsters</PageTitle>
 
-<div class="container card" style="width: 18rem;">
+<div class="container card justify-content-center text-center " style="width: 18rem; background-color:cadetblue">
     <div class="form-group card-body">
         <input class="form-control"
                @bind-value="SearchTerm" id="search"
-               placeholder="Search for Hamster by name..." />
+               placeholder="Search for Hamster..." />
     </div>
     <div class="card-footer">
         <button class="btn btn-secondary" @onclick="GethamsterbySearch">
@@ -18,23 +18,45 @@
     </div>
 </div>
 
-<table class="table">
+@*-----OM man vill ha TABLE istället-----*@
+
+@*<table class="table">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th></th>
-        </tr>
+    <tr>
+    <th>Name</th>
+    <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var hamster in hamsters)
-        {@if (hamster.IsActive)
-         {
-            <tr>
-                <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
-                <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
-            </tr>
-         }
-        }
+    @foreach (var hamster in hamsters)
+    {@if (hamster.IsActive)
+    {
+    <tr>
+    <td><a href="/profile/@hamster.Id.ToString()/@url">@hamster.Name</a></td>
+    <td><img class="hamster-bild-small" src="@hamster.ImgName"></td>
+    </tr>
+    }
+    }
     </tbody>
-</table>
+    </table>*@
 
+@*----Visar alla hamstar i små cards-----*@
+
+<div class="row justify-content-center text-center">
+
+    @foreach (var hamster in hamsters)
+    {@if (hamster.IsActive)
+        {
+            <a class="col col-sm-2 btn" href="/profile/@hamster.Id.ToString()/@url">
+                <div class="card card-goodies card-hover" style="background-color:cadetblue">
+                    <div class="card-title">
+                        @hamster.Name
+                    </div>
+                    <div class="card-img">
+                        <img class="hamster-bild-small" src="@hamster.ImgName">
+                    </div>
+                </div>
+            </a>
+        }
+    }
+</div>

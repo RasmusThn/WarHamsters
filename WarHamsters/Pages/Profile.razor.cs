@@ -28,6 +28,10 @@ namespace WarHamsters.Pages
             navigation.NavigateTo("/gallery");
 
         }
+        public void Edit()
+        {
+            navigation.NavigateTo("/Edit");
+        }
         public void GoBack()
         {
             if (Oldpage == "top5")

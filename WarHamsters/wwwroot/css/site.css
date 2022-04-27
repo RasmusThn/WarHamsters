@@ -1,7 +1,8 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color:darkkhaki
 }
 
@@ -63,40 +64,34 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-.hamster-bild{
-    width:100%;
-    height:100%;
-    border-width:medium;
-    border-radius:50%;
-    
+.hamster-bild {
+    width: 100%;
+    height: 100%;
+    border-width: medium;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card-goodies {
 
-    background-color: orange;
     border-width:thick;
     border-radius:10px;
     margin: 5px;
 
 }
-.card-goodies2 {
+.card-hover:hover{
 
-    background-color: limegreen;
-    border-width:thick;
-    border-radius:10px;
-    margin: 5px;
-
+    opacity:0.5;
 }
-.card-goodies3 {
 
-    background-color: yellowgreen;
-    border-width:thick;
-    border-radius:10px;
-    margin: 5px;
-
-}
 .hamster-bild-small {
     width: 70px;
     height: 70px;
+    border-width: medium;
+    border-radius: 50%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .carousel-caption{
     color:white;

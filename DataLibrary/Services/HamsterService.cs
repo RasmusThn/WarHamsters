@@ -12,10 +12,10 @@ public class HamsterService
         _repo = repo;
     }
 
-    public async Task AddWin(Hamster hamsterWin, Hamster hamsterLoss)
+    public async Task UpdateHamster(Hamster hamster)
     {
 
-        await _repo.AddWin(hamsterWin, hamsterLoss);
+        await _repo.UpdateHamster(hamster);
     }
     public Task AddHamster(Hamster hamster)
     {
