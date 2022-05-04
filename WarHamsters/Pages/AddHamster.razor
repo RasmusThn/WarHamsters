@@ -10,6 +10,7 @@
     <EditForm Model="Hamster" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
         <DataAnnotationsValidator/>
         <ValidationSummary/>
+        
         <div class="form-group">
             <label for="@Hamster.Name">Name</label>
             <input @bind-value="@Hamster.Name" type="text" class="form-control">
