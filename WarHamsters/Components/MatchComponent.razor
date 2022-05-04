@@ -11,6 +11,7 @@
                 <strong>Match Id:</strong> @match.Id
                 <strong>Winner:</strong> @hamsters.Where(x=>x.Id == match.WinnerId).First().Name
                 <strong>Looser:</strong> @hamsters.Where(x=>x.Id == match.LoserId).First().Name
+                <strong>Time:</strong> @match.Time
             </div>
         }
     </div>

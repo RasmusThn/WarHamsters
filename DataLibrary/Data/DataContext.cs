@@ -10,12 +10,14 @@ namespace DataLibrary.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Hamster>().HasData(
+                //Öppna på egen risk...
             #region AddHamstrar
                 new Hamster
                 {
@@ -378,11 +380,11 @@ namespace DataLibrary.Data
                     FavFood = "Sallad"
                 }
                 ) ;
-            #endregion
+            #endregion 
           
         }
-        public DbSet<Hamster> Hamsters { get; set; }
-        public DbSet<Match> Matches { get; set; }
+        public DbSet<Hamster>? Hamsters { get; set; }
+        public DbSet<Match>? Matches { get; set; }
 
        
     }

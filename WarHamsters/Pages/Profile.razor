@@ -15,7 +15,7 @@
 <div class="row-cols-sm-4">
 
 <button @onclick="GoBack" class="btn btn-secondary">Back</button>
-@*<button @onclick="Edit" class="btn btn-check">Edit</button>*@
+@*<button @onclick="Edit" class="btn btn-check">Edit</button>*@ 
 <button @onclick="OpenDeleteDialog" class="btn btn-danger">Delete</button>
 
 <button @onclick="ShowMatches" class="btn btn-primary">@_ShowHide Matches</button>
@@ -28,10 +28,7 @@
 <MatchComponent Hamster="@_hamster"></MatchComponent>
 }
 </div>
-
 </div>
-
-
 
 @*---Modal----*@
 @if (DeleteDialogOpen)

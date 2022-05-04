@@ -9,7 +9,7 @@ namespace WarHamsters.Pages
         [Parameter]
         public string HamsterId { get; set; }
         [Parameter]
-        public string? Oldpage { get; set; }
+        public string Oldpage { get; set; }
         private Hamster _hamster;
         private bool _showMatches = false;
         private string _ShowHide = "Show";

@@ -16,10 +16,11 @@ builder.Services.AddScoped<HamsterService>();
 builder.Services.AddScoped<HamsterRepository>();
 builder.Services.AddScoped<MatchService>();
 builder.Services.AddScoped<MatchRepository>();
-var cs = builder.Configuration.GetConnectionString("Default");
 
+var cs = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContextFactory<DataContext>(opt => opt.UseSqlServer(cs));
 builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(cs));
+builder.Services.AddTransient<IStartupFilter, MigrationStartupFilter<DataContext>>();
 
 var app = builder.Build();
 

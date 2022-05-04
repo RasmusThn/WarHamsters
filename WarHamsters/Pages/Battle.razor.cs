@@ -16,8 +16,8 @@ public partial class Battle : ComponentBase
     public async Task Update(Hamster hamsterWin, Hamster hamsterLoss)
     {
         
-        await AddWin(hamsterWin);
-        await AddLoss(hamsterLoss);
+        AddWin(hamsterWin);
+        AddLoss(hamsterLoss);
         //await hamsterService.AddWin(hamsterWin, hamsterLoss);
         await hamsterService.UpdateHamster(hamsterWin);
         await hamsterService.UpdateHamster(hamsterLoss);
@@ -26,12 +26,12 @@ public partial class Battle : ComponentBase
         RunAgain(hamsterWin, hamsterLoss);
 
     }
-    public async Task AddWin(Hamster hamsterWin)
+    public void AddWin(Hamster hamsterWin)
     {
         hamsterWin.Wins++;
         hamsterWin.Games++;
     }
-    public async Task AddLoss(Hamster hamsterLoss)
+    public void AddLoss(Hamster hamsterLoss)
     {
         hamsterLoss.Defeats++;
         hamsterLoss.Games++;

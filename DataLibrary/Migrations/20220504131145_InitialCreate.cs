@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -14,11 +15,11 @@ namespace DataLibrary.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    FavFood = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Loves = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImgName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FavFood = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Loves = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ImgName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Wins = table.Column<int>(type: "int", nullable: false),
                     Defeats = table.Column<int>(type: "int", nullable: false),
                     Games = table.Column<int>(type: "int", nullable: false),
@@ -36,7 +37,8 @@ namespace DataLibrary.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
-                    LoserId = table.Column<int>(type: "int", nullable: false)
+                    LoserId = table.Column<int>(type: "int", nullable: false),
+                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
